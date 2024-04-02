@@ -21,7 +21,8 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth/auth", {
+      // .get("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth/auth", {
+      .get("http://localhost:3001/auth/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },

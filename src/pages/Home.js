@@ -16,7 +16,8 @@ function Home() {
       navigate("/login");
     } else {
       axios
-        .get("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts", {
+        // .get("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts", {
+        .get("http://localhost:3001/posts", {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
@@ -33,7 +34,8 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/likes",
+        // "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/likes",
+        "http://localhost:3001/likes",
         { PostId: postId },
         {
           headers: { accessToken: localStorage.getItem("accessToken") },

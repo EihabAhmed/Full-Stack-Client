@@ -13,19 +13,26 @@ function Post() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/byId/${id}`).then((response) => {
+    // axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/byId/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
 
-    axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments/${id}`).then((response) => {
-      setComments(response.data);
-    });
+    axios
+      .get(
+        // `https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments/${id}`
+        `http://localhost:3001/comments/${id}`
+      )
+      .then((response) => {
+        setComments(response.data);
+      });
   }, []);
 
   const addComment = () => {
     axios
       .post(
-        "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments",
+        // "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments",
+        "http://localhost:3001/comments",
         {
           commentBody: newComment,
           PostId: id,
@@ -52,9 +59,13 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        // `https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/comments/${id}`,
+        `http://localhost:3001/comments/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         setComments(
           comments.filter((val) => {
@@ -66,9 +77,13 @@ function Post() {
 
   const deletePost = (id) => {
     axios
-      .delete(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        // `https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/${id}`,
+        `http://localhost:3001/posts/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         navigate("/");
       });
@@ -78,7 +93,8 @@ function Post() {
     if (option === "title") {
       let newTitle = prompt("Enter new Title:");
       axios.put(
-        "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/title",
+        // "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/title",
+        "http://localhost:3001/posts/title",
         {
           newTitle: newTitle,
           id: id,
@@ -92,7 +108,8 @@ function Post() {
     } else if (option === "body") {
       let newPostText = prompt("Enter new Text:");
       axios.put(
-        "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/postText",
+        // "https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/postText",
+        "http://localhost:3001/posts/postText",
         {
           newText: newPostText,
           id: id,

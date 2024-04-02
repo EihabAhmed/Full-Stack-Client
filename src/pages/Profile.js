@@ -11,12 +11,14 @@ function Profile() {
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth/basicinfo/${id}`).then((response) => {
+    // axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth/basicinfo/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
       // console.log(response.data);
       setUsername(response.data.username);
     });
 
-    axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/byuserid/${id}`).then((response) => {
+    // axios.get(`https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/posts/byuserid/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/posts/byuserid/${id}`).then((response) => {
       setListOfPosts(response.data);
     });
   }, []);

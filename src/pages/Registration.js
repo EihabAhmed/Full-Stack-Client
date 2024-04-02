@@ -15,7 +15,8 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth", data).then(() => {
+    // axios.post("https://ehab-full-stack-app-389a4a1bd593.herokuapp.com/auth", data).then(() => {
+    axios.post("http://localhost:3001/auth", data).then(() => {
       console.log(data);
     });
   };
